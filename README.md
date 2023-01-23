@@ -9,4 +9,4 @@ First and foremost, I wanna know how to look at a big dataset and figure out how
 ## Portfolio
 Currently it's empty!
 
-[visualizing debt](visualizing-government-debt) | [critique by design](critique-by-design)
+[visualizing debt](https://alex7li.github.io/DataStories/visualizing-government-debt) | [critique by design](https://alex7li.github.io/DataStories/critique-by-design)
