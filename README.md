@@ -1,4 +1,3 @@
-# [Data Stories Site](https://alex7li.github.io/DataStories/)
 For the telling stories with data class.
 ## About Me
 Hi! I'm Alex, in the MS Artificial Intellegence and Innovation program at CMU. This semester I wanna learn dataviz to be a datawiz :)
