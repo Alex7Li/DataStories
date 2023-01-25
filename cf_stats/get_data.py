@@ -4,12 +4,13 @@ import logging
 import requests
 import time
 import datetime
+import itertools
 from pathlib import Path
 import pandas as pd
 from tqdm import tqdm
 logging.basicConfig(filename='logfile.log', filemode='w', level=logging.INFO)
 
-data_folder = Path('data')
+data_folder = Path('') / 'cf_stats' / 'data'
 
 skip_503 = False
 
@@ -123,6 +124,27 @@ def generate_user_rating_history(handle):
     df = pd.DataFrame.from_records(rating_change_list)
     return df
 
+def gen_user_data_files(handle, submission_fname, rating_fname):
+    try:
+        if not os.path.isfile(submission_fname):
+            submissions = generate_user_submissions(handle)
+            ratings = generate_user_rating_history(handle)
+            submissions.to_csv(submission_fname)
+            ratings.to_csv(rating_fname)
+    except ConnectionError as e:
+        # Log error and just keep going we don't want the script to get stuck
+        # because someone changed their username or something.
+        logging.warning(f"Got error {e} on request {last_query}")
+    
+
+def generate_sample_user_data():
+    # make one sample so I can annotate it on kaggle.
+    handle = "WolfBlue" # That's me!
+    submission_fname = data_folder / f'submissions_sample.csv'
+    rating_fname = data_folder / f'ratings_sample.csv'
+    gen_user_data_files(handle, submission_fname, rating_fname)
+
+
 def generate_user_data(handles, subset_size=-1):
     handles = handles[:subset_size]
     handles_to_load = [handle for handle in handles if 
@@ -138,19 +160,12 @@ def generate_user_data(handles, subset_size=-1):
     for handle in pbar:
         submission_fname = data_folder / 'submissions' / f'{handle}.csv'
         rating_fname = data_folder / 'ratings' / f'{handle}.csv'
-        try:
-            if not os.path.isfile(submission_fname):
-                submissions = generate_user_submissions(handle)
-                ratings = generate_user_rating_history(handle)
-                submissions.to_csv(submission_fname)
-                ratings.to_csv(rating_fname)
-        except ConnectionError as e:
-            # Oops. It happens a lot, actually.
-            logging.warning(f"Got error {e} on request {last_query}")
+        gen_user_data_files(handle, submission_fname, rating_fname)
 
 def generate_problem_data():
     formated = []
-    for problem_data in [get_cf('problemset.problems', {}), get_cf('problemset.problems', {'problemsetName': 'acmsguru'})]:
+    for problem_data in itertools.chain([get_cf('problemset.problems', {})], 
+                                        [get_cf('problemset.problems', {'problemsetName': 'acmsguru'})]):
         for problemInfo, statistics in zip(problem_data['problems'], problem_data['problemStatistics']):
             rating = problemInfo['rating'] if 'rating' in problemInfo else float('nan')
             formated.append({
@@ -163,6 +178,8 @@ def generate_problem_data():
     df = pd.DataFrame.from_records(formated, index='problemId')
     df = df.to_csv(data_folder / 'problems.csv')
 
+
+# Cleanup functions
 def dedup_handles(destroy=False):
     good_handles = get_rated_handles(activeOnly=False)
     # Ran this during christmas, when people can change their handles :|
@@ -186,11 +203,10 @@ def main():
     os.makedirs(data_folder / 'ratings', exist_ok=True)
     os.makedirs(data_folder / 'submissions', exist_ok=True)
     rated_handles = get_rated_handles()
-    with open('data/handles.json', 'w') as f:
+    with open(data_folder / 'handles.json', 'w') as f:
         json.dump(rated_handles, f)
 
     logging.info(f"There are {len(rated_handles)} different rated users")
-    generate_problem_data()
 
     generate_user_data(rated_handles)
     n_ratings = len(os.listdir(data_folder / 'ratings'))
@@ -201,9 +217,10 @@ def main():
     dedup_handles(destroy=True)
 
 if __name__ == '__main__':
+    # generate_sample_user_data()
+    # generate_problem_data()
     main()
 
-# Unused
 def users_from_contest(id):
     recent_contest_standings = get_cf('contest.standings', {'contestId': id})
     rows = recent_contest_standings['rows']
