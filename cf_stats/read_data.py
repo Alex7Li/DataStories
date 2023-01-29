@@ -36,6 +36,27 @@ def getTrueRatings(user_ratings):
         user_ratings.iloc[0]['newRating'] += 1500
     return user_ratings
 
+def getPerf(user_ratings):
+    # sharpen the first few ratings with the performance rating formula
+    perf_col = []
+    ma_perf_col = []
+    gamma = .25
+    for i in range(len(user_ratings)):
+        # estimate the performance ratings, this isn't exactly cf's formula cause I don't know it.
+        performance_rating = 4 * (user_ratings.iloc[i]['newRating'] - user_ratings.iloc[i]['oldRating']) + user_ratings.iloc[i]['oldRating']
+        perf_col.append(performance_rating)
+        if i > 1:
+            ma_perf_col.append((performance_rating * gamma +  ma_perf_col[-1] * (1 - gamma)))
+        else:
+            ma_perf_col.append(performance_rating * gamma) # moving average
+    denom = 0
+    for i in range(len(user_ratings)):
+        denom = gamma + denom * (1 - gamma)
+        ma_perf_col[i] = ma_perf_col[i] / denom
+    user_ratings['perf'] = perf_col
+    user_ratings['maPerf'] = ma_perf_col
+    return user_ratings
+    
 def get_data(subset_size=0):
     filenames = os.listdir(data_folder / 'ratings')
     if subset_size != 0:
@@ -44,7 +65,7 @@ def get_data(subset_size=0):
     submissions = {}
     for handlecsv in tqdm.tqdm(filenames, "reading data"):
         handle = handlecsv[:-4]
-        ratings[handle] = getTrueRatings(pd.read_csv(data_folder / 'ratings' / handlecsv))
+        ratings[handle] = getPerf(getTrueRatings(pd.read_csv(data_folder / 'ratings' / handlecsv)))
         submissions[handle] = pd.read_csv(data_folder / 'submissions' / handlecsv)
     return ratings, submissions
 
@@ -55,7 +76,7 @@ def rating_at_time(user_ratings, time):
     if len(past_rating_changes) == 0:
         return user_ratings.iloc[0]['oldRating'], 0 # No contests at the time
     last_contest = past_rating_changes.iloc[len(past_rating_changes) - 1]
-    current_rating = last_contest['newRating']
+    current_rating = last_contest['maPerf']
     return current_rating, last_contest[0]
     
 
@@ -70,16 +91,19 @@ def shortTermImprovement(user_ratings, time):
 
 n_buckets = 5
 def rating_to_bucket(rating):
-    if rating < 1200:
+    if rating < 1000:
         return 0
-    if rating < 1600:
+    if rating < 1400:
         return 1
-    if rating < 1900:
+    if rating < 1800:
         return 2
-    if rating < 2300:
+    if rating < 2200:
         return 3
     else:
+        assert rating >= 2200
+        # assert 4 == n_buckets - 1
         return 4
+
 def problemLearnings(ratings, submissions):
     problemIncreases = [defaultdict(lambda: 0) for _ in range(n_buckets)]
     problemCounts = [defaultdict(lambda: 0) for _ in range(n_buckets)]
@@ -103,8 +127,9 @@ def problemLearnings(ratings, submissions):
                     bucket = rating_to_bucket(oldRating)
                     problemIncreases[bucket][pId] += improvement
                     problemCounts[bucket][pId] += 1
-    problemUsefulness = []
+    bucketsUsefulness = []
     for i in range(n_buckets):
+        problemUsefulness = []
         logging.info(f"Bucket {i}")
         for pId, count in problemCounts[i].items():
             if count < 30:
@@ -117,12 +142,13 @@ def problemLearnings(ratings, submissions):
         logging.info(f"Most useful:  {list(reversed(problemUsefulness[-50:]))}")
         logging.info("ALL:")
         logging.info(problemUsefulness)
-    return problemUsefulness
+        bucketsUsefulness.append(problemUsefulness)
+    return bucketsUsefulness
 
 def main():
-    subset_size = 0
+    subset_size = 1000
     ratings, submissions = get_data(subset_size)
-    logging.basicConfig(filename=f'learnings_{subset_size}.log', filemode='w', level=logging.INFO)
+    logging.basicConfig(filename=f'best_problems_{subset_size}.log', filemode='w', level=logging.INFO)
     problemLearnings(ratings, submissions)
     print("Done, check log file")
 
