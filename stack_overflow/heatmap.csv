@@ -1,0 +1,362 @@
+Have used the tool in the past, want to use the tool, percentage
+Notepad++,Notepad++,98.02
+Notepad++,Nano,11.86
+Notepad++,Visual Studio Code,72.66
+Notepad++,Other,6.72
+Notepad++,Sublime,15.08
+Notepad++,Visual Studio,54.04
+Notepad++,(Neo)vim,20.26
+Notepad++,Jetbrains,46.90
+Notepad++,IPython,12.77
+Notepad++,Eclipse,22.14
+Notepad++,Atom,10.41
+Notepad++,NetBeans,9.21
+Notepad++,NextMate,0.99
+Notepad++,Emacs,2.49
+Notepad++,RStudio,4.55
+Notepad++,Android Studio,22.29
+Notepad++,Spyder,3.96
+Notepad++,Xcode,7.70
+Notepad++,Qt Creator,4.37
+Nano,Notepad++,38.72
+Nano,Nano,96.33
+Nano,Visual Studio Code,79.50
+Nano,Other,2.49
+Nano,Sublime,27.17
+Nano,Visual Studio,32.72
+Nano,(Neo)vim,31.25
+Nano,Jetbrains,56.20
+Nano,IPython,18.91
+Nano,Eclipse,19.27
+Nano,Atom,18.78
+Nano,NetBeans,8.57
+Nano,NextMate,2.10
+Nano,Emacs,6.62
+Nano,RStudio,5.95
+Nano,Android Studio,28.84
+Nano,Spyder,4.82
+Nano,Xcode,14.14
+Nano,Qt Creator,7.24
+Visual Studio Code,Notepad++,28.51
+Visual Studio Code,Nano,10.12
+Visual Studio Code,Visual Studio Code,96.07
+Visual Studio Code,Other,1.83
+Visual Studio Code,Sublime,16.26
+Visual Studio Code,Visual Studio,35.42
+Visual Studio Code,(Neo)vim,23.84
+Visual Studio Code,Jetbrains,42.09
+Visual Studio Code,IPython,12.12
+Visual Studio Code,Eclipse,13.01
+Visual Studio Code,Atom,9.57
+Visual Studio Code,NetBeans,5.51
+Visual Studio Code,NextMate,0.65
+Visual Studio Code,Emacs,2.96
+Visual Studio Code,RStudio,3.27
+Visual Studio Code,Android Studio,20.98
+Visual Studio Code,Spyder,2.30
+Visual Studio Code,Xcode,10.92
+Visual Studio Code,Qt Creator,2.82
+Other,Notepad++,50.45
+Other,Nano,6.39
+Other,Visual Studio Code,42.46
+Other,Other,93.55
+Other,Sublime,9.96
+Other,Visual Studio,37.74
+Other,(Neo)vim,7.41
+Other,Jetbrains,19.99
+Other,IPython,7.22
+Other,Eclipse,14.05
+Other,Atom,7.02
+Other,NetBeans,9.71
+Other,NextMate,3.13
+Other,Emacs,3.83
+Other,RStudio,4.15
+Other,Android Studio,18.97
+Other,Spyder,4.15
+Other,Xcode,9.71
+Other,Qt Creator,5.30
+Sublime,Notepad++,30.13
+Sublime,Nano,15.32
+Sublime,Visual Studio Code,67.39
+Sublime,Other,2.15
+Sublime,Sublime,93.19
+Sublime,Visual Studio,29.14
+Sublime,(Neo)vim,31.07
+Sublime,Jetbrains,56.64
+Sublime,IPython,17.19
+Sublime,Eclipse,17.24
+Sublime,Atom,15.18
+Sublime,NetBeans,8.95
+Sublime,NextMate,1.77
+Sublime,Emacs,3.88
+Sublime,RStudio,5.34
+Sublime,Android Studio,24.71
+Sublime,Spyder,4.55
+Sublime,Xcode,14.62
+Sublime,Qt Creator,4.08
+Visual Studio,Notepad++,47.31
+Visual Studio,Nano,8.08
+Visual Studio,Visual Studio Code,79.38
+Visual Studio,Other,4.05
+Visual Studio,Sublime,15.16
+Visual Studio,Visual Studio,92.09
+Visual Studio,(Neo)vim,15.88
+Visual Studio,Jetbrains,37.02
+Visual Studio,IPython,9.87
+Visual Studio,Eclipse,15.11
+Visual Studio,Atom,9.38
+Visual Studio,NetBeans,7.65
+Visual Studio,NextMate,0.68
+Visual Studio,Emacs,2.28
+Visual Studio,RStudio,3.29
+Visual Studio,Android Studio,22.88
+Visual Studio,Spyder,2.85
+Visual Studio,Xcode,9.49
+Visual Studio,Qt Creator,3.93
+(Neo)vim,Notepad++,21.43
+(Neo)vim,Nano,12.27
+(Neo)vim,Visual Studio Code,70.66
+(Neo)vim,Other,0.90
+(Neo)vim,Sublime,18.01
+(Neo)vim,Visual Studio,21.78
+(Neo)vim,(Neo)vim,88.88
+(Neo)vim,Jetbrains,47.04
+(Neo)vim,IPython,15.46
+(Neo)vim,Eclipse,11.93
+(Neo)vim,Atom,10.77
+(Neo)vim,NetBeans,4.48
+(Neo)vim,NextMate,1.20
+(Neo)vim,Emacs,6.96
+(Neo)vim,RStudio,3.82
+(Neo)vim,Android Studio,17.28
+(Neo)vim,Spyder,2.75
+(Neo)vim,Xcode,10.05
+(Neo)vim,Qt Creator,3.86
+Jetbrains,Notepad++,30.00
+Jetbrains,Nano,10.93
+Jetbrains,Visual Studio Code,70.43
+Jetbrains,Other,1.48
+Jetbrains,Sublime,19.81
+Jetbrains,Visual Studio,29.54
+Jetbrains,(Neo)vim,26.88
+Jetbrains,Jetbrains,88.02
+Jetbrains,IPython,14.10
+Jetbrains,Eclipse,15.72
+Jetbrains,Atom,10.92
+Jetbrains,NetBeans,6.76
+Jetbrains,NextMate,0.89
+Jetbrains,Emacs,3.53
+Jetbrains,RStudio,3.50
+Jetbrains,Android Studio,23.99
+Jetbrains,Spyder,2.63
+Jetbrains,Xcode,10.13
+Jetbrains,Qt Creator,3.10
+IPython,Notepad++,32.10
+IPython,Nano,14.06
+IPython,Visual Studio Code,75.22
+IPython,Other,1.88
+IPython,Sublime,23.07
+IPython,Visual Studio,28.57
+IPython,(Neo)vim,35.49
+IPython,Jetbrains,57.18
+IPython,IPython,85.93
+IPython,Eclipse,16.24
+IPython,Atom,15.20
+IPython,NetBeans,7.79
+IPython,NextMate,1.53
+IPython,Emacs,6.43
+IPython,RStudio,13.27
+IPython,Android Studio,21.58
+IPython,Spyder,11.58
+IPython,Xcode,9.16
+IPython,Qt Creator,4.82
+Eclipse,Notepad++,54.55
+Eclipse,Nano,12.58
+Eclipse,Visual Studio Code,67.85
+Eclipse,Other,4.72
+Eclipse,Sublime,22.91
+Eclipse,Visual Studio,38.89
+Eclipse,(Neo)vim,26.85
+Eclipse,Jetbrains,48.71
+Eclipse,IPython,14.99
+Eclipse,Eclipse,85.28
+Eclipse,Atom,15.64
+Eclipse,NetBeans,17.27
+Eclipse,NextMate,1.94
+Eclipse,Emacs,5.13
+Eclipse,RStudio,5.64
+Eclipse,Android Studio,29.88
+Eclipse,Spyder,5.51
+Eclipse,Xcode,10.40
+Eclipse,Qt Creator,6.02
+Atom,Notepad++,38.40
+Atom,Nano,18.10
+Atom,Visual Studio Code,65.71
+Atom,Other,3.23
+Atom,Sublime,29.98
+Atom,Visual Studio,33.53
+Atom,(Neo)vim,31.18
+Atom,Jetbrains,54.55
+Atom,IPython,21.85
+Atom,Eclipse,23.92
+Atom,Atom,80.98
+Atom,NetBeans,13.08
+Atom,NextMate,2.59
+Atom,Emacs,5.42
+Atom,RStudio,8.93
+Atom,Android Studio,32.10
+Atom,Spyder,7.66
+Atom,Xcode,16.55
+Atom,Qt Creator,5.10
+NetBeans,Notepad++,58.43
+NetBeans,Nano,16.76
+NetBeans,Visual Studio Code,72.04
+NetBeans,Other,10.19
+NetBeans,Sublime,30.19
+NetBeans,Visual Studio,48.98
+NetBeans,(Neo)vim,26.30
+NetBeans,Jetbrains,55.74
+NetBeans,IPython,20.09
+NetBeans,Eclipse,41.02
+NetBeans,Atom,20.19
+NetBeans,NetBeans,79.26
+NetBeans,NextMate,4.26
+NetBeans,Emacs,8.52
+NetBeans,RStudio,9.35
+NetBeans,Android Studio,41.02
+NetBeans,Spyder,8.89
+NetBeans,Xcode,14.63
+NetBeans,Qt Creator,9.07
+NextMate,Notepad++,38.46
+NextMate,Nano,24.08
+NextMate,Visual Studio Code,69.23
+NextMate,Other,14.72
+NextMate,Sublime,36.45
+NextMate,Visual Studio,37.46
+NextMate,(Neo)vim,43.48
+NextMate,Jetbrains,59.87
+NextMate,IPython,26.42
+NextMate,Eclipse,26.09
+NextMate,Atom,25.75
+NextMate,NetBeans,18.39
+NextMate,NextMate,78.60
+NextMate,Emacs,19.40
+NextMate,RStudio,17.06
+NextMate,Android Studio,33.78
+NextMate,Spyder,15.72
+NextMate,Xcode,38.13
+NextMate,Qt Creator,13.71
+Emacs,Notepad++,15.63
+Emacs,Nano,13.17
+Emacs,Visual Studio Code,53.00
+Emacs,Other,2.05
+Emacs,Sublime,11.89
+Emacs,Visual Studio,18.41
+Emacs,(Neo)vim,43.40
+Emacs,Jetbrains,38.68
+Emacs,IPython,16.40
+Emacs,Eclipse,10.50
+Emacs,Atom,9.50
+Emacs,NetBeans,4.51
+Emacs,NextMate,2.36
+Emacs,Emacs,77.54
+Emacs,RStudio,5.93
+Emacs,Android Studio,13.86
+Emacs,Spyder,3.57
+Emacs,Xcode,9.46
+Emacs,Qt Creator,5.03
+RStudio,Notepad++,38.03
+RStudio,Nano,14.29
+RStudio,Visual Studio Code,65.29
+RStudio,Other,4.55
+RStudio,Sublime,22.71
+RStudio,Visual Studio,31.19
+RStudio,(Neo)vim,27.81
+RStudio,Jetbrains,44.44
+RStudio,IPython,46.58
+RStudio,Eclipse,18.36
+RStudio,Atom,16.84
+RStudio,NetBeans,10.21
+RStudio,NextMate,4.00
+RStudio,Emacs,8.83
+RStudio,RStudio,77.23
+RStudio,Android Studio,18.15
+RStudio,Spyder,17.32
+RStudio,Xcode,10.28
+RStudio,Qt Creator,5.73
+Android Studio,Notepad++,35.93
+Android Studio,Nano,12.17
+Android Studio,Visual Studio Code,77.30
+Android Studio,Other,3.14
+Android Studio,Sublime,23.75
+Android Studio,Visual Studio,38.86
+Android Studio,(Neo)vim,21.92
+Android Studio,Jetbrains,57.18
+Android Studio,IPython,13.01
+Android Studio,Eclipse,21.17
+Android Studio,Atom,15.75
+Android Studio,NetBeans,12.01
+Android Studio,NextMate,1.06
+Android Studio,Emacs,2.88
+Android Studio,RStudio,3.65
+Android Studio,Android Studio,75.85
+Android Studio,Spyder,3.63
+Android Studio,Xcode,24.09
+Android Studio,Qt Creator,4.42
+Spyder,Notepad++,52.69
+Spyder,Nano,17.92
+Spyder,Visual Studio Code,67.98
+Spyder,Other,5.97
+Spyder,Sublime,33.45
+Spyder,Visual Studio,41.34
+Spyder,(Neo)vim,32.14
+Spyder,Jetbrains,53.17
+Spyder,IPython,58.90
+Spyder,Eclipse,28.67
+Spyder,Atom,24.97
+Spyder,NetBeans,15.53
+Spyder,NextMate,5.50
+Spyder,Emacs,7.41
+Spyder,RStudio,25.45
+Spyder,Android Studio,27.48
+Spyder,Spyder,75.15
+Spyder,Xcode,10.39
+Spyder,Qt Creator,11.11
+Xcode,Notepad++,27.16
+Xcode,Nano,12.08
+Xcode,Visual Studio Code,78.25
+Xcode,Other,3.11
+Xcode,Sublime,25.48
+Xcode,Visual Studio,35.07
+Xcode,(Neo)vim,24.26
+Xcode,Jetbrains,48.20
+Xcode,IPython,12.04
+Xcode,Eclipse,17.60
+Xcode,Atom,16.38
+Xcode,NetBeans,10.05
+Xcode,NextMate,2.63
+Xcode,Emacs,4.12
+Xcode,RStudio,3.63
+Xcode,Android Studio,47.08
+Xcode,Spyder,3.27
+Xcode,Xcode,64.52
+Xcode,Qt Creator,3.70
+Qt Creator,Notepad++,48.94
+Qt Creator,Nano,24.88
+Qt Creator,Visual Studio Code,73.16
+Qt Creator,Other,7.59
+Qt Creator,Sublime,26.02
+Qt Creator,Visual Studio,49.92
+Qt Creator,(Neo)vim,39.48
+Qt Creator,Jetbrains,53.51
+Qt Creator,IPython,22.35
+Qt Creator,Eclipse,26.75
+Qt Creator,Atom,19.25
+Qt Creator,NetBeans,13.70
+Qt Creator,NextMate,3.43
+Qt Creator,Emacs,10.11
+Qt Creator,RStudio,7.42
+Qt Creator,Android Studio,33.36
+Qt Creator,Spyder,9.46
+Qt Creator,Xcode,14.11
+Qt Creator,Qt Creator,63.54

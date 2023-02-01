@@ -12,7 +12,7 @@
 ## Flourish viz 2 - Heatmap
 
 <div class="flourish-embed flourish-heatmap" data-src="visualisation/12580282"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
-
+w
 I found there were a lot of difficulties in getting my idea down electronially compared to sketching. It is difficult to
 control color and axis within the constraints of the flourish system. For example, I wanted to add y labels to the heatmap
 and sort by country but it turns out that this functionality does not exist for that chart type.
