@@ -3,7 +3,9 @@
 For this assignment, we will be critiquing and trying to improve on a visual from the stack overflow web developer survey. It's quite eye catching, let's look at it together.
 
 # Visual to Critique
+
 ## Integrated Development Environment
+
 VS Code is the most interconnected IDE among all respondents, Professional Developers, and those learning to code. People who are learning to code have more IDEs they want to work with - IPython/Jupyter, Eclipse, Atom - than Professional Developers.
 
 All
@@ -19,7 +21,6 @@ Learning to Code
 ### Overall Observations
 
 This is an interesting visualization and the use of color to display movement was really nice too look at. I enjoy how it is secretly a pi chart crust, so it's easy to compare categories. However, the pi chart is representing a somewhat wierd concept 'the sum count of people who want to use or are using this thing'. Also, some data has been removed to keep it clean. I think I would use to have 2 lines for 'using' and 'want to use' instead of a circle, and then instead of cutting out relations I would make an 'other' category and reduce the number of categories. If the user is interested in a specific software which is 'other', then I would let them modify the other category by clicking it (it might be a bit hard to implement with our tools, though).
-
 
 ### Primary Audience
 
@@ -54,7 +55,6 @@ It looks like they has cut off any sufficiently small categories to prevent visu
 it really unclear what I can trust the pi chart of the diagram and it leads to crazy conclusions like "<i>every</i>
 professional developer using subline text wants to use VS code". I don't think it was created with the intent to misrepresent the categories, but it is very misleading.
 
-
 - Intuitiveness: 5/10
 
 It's confusing! It took me a while to understand that the
@@ -73,12 +73,17 @@ I saw this chart and was instantly impressed by how pretty it was, so it has to 
 
 This is a bit hard to answer. I guess it is engaging since the audience can use it to argue why their favorite editor is the best. I could see myself showing it to someone.
 
-
 ## Redesigns
 
-When looking through the survey data, I realized there is another source of big confusion, since each survey response is a list of prior technologies and a list of desired future technologies. Since it's a list, a pi chart doesn't really
-make that much sense. In my redesigns, I tried to make this a bit more apparent.
+When looking through the survey data, I realized there is another source of big confusion, since each survey response is a list of prior technologies and a list of desired future technologies. This means using a Sankey diagram as I originally planned doesn't make sense. Quite sad, because I wanted to try it :(. Anyways, I played with the values a lot and got these two very different charts.
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/12609225"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
 <div class="flourish-embed flourish-heatmap" data-src="visualisation/12609969"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+## Survey
+
+<b>Student, ~20s, Female</b>
+First chart has too many colors and everything is squished. The y axis has no percentage label so it's not clear what it means. Hard to map the colors shown in the legend to the values.
+
+Hard to understand the second chart without the interactive labels. Not clear what IDE means.
