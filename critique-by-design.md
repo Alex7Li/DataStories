@@ -89,18 +89,23 @@ First chart has too many colors and everything is squished. The y axis has no pe
 Hard to understand the second chart without the interactive labels. Not clear what IDE means.
 
 **Student, ~20s, Male**
-First chart: it is very hard to see the values that are small without interaction. Overall, I can conclude that vscode is the most popular.
+First chart: It is very hard to see the values that are small without interaction. Overall, I can conclude that vscode is the most popular.
 
 Second chart: I don't like that the x axis labels are not all visible. The word 'churn' reflects the opposite of what is going on, it should be 'retention'. I like map visualizations. It would be cool to do it by country.
 
+Based on the feedback, I felt that the first chart was much more confusing than the second chart. Nobody showed that they really understood what the 'percentage of 100%' actually was in the first chart, and everyone just assumed that it was a single select question, so it has many of the same problems
+as the original visualization. Plus, there isn't really a way to fix the concern that a lot of the items are small with this visualization. I felt that people understood the second data viz much better, for example the second person told me that the title was wrong instantly, because they instantly understood what the chart was trying to convey even without it. From all of this it's clear that the final version should be a remake of the second chart rather than the first.
+
 ## Final Version
 
-<div class='tableauPlaceholder' id='viz1675364127118' style='position: relative'><noscript><a href='#'><img alt='Interactive Development Environment Retention 2021 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='IDERetention2021&#47;IDERetentionHeatmap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
+Based on the feedback, the second chart is a bit better overall. I used tableau rather than flourish this time to explore some options, and because I was feeling quite limited by flourish. I managed to address the concerns that I felt were most important, though I'm not that happy about the position of the y axis label.
+
+<div class='tableauPlaceholder' id='viz1675367213955' style='position: relative'><noscript><a href='#'><img alt='Interactive Development Environment Retention 2021 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='IDERetention2021&#47;IDERetentionHeatmap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
 <script type='text/javascript'>
-var divElement = document.getElementById('viz1675364127118');
+var divElement = document.getElementById('viz1675367213955');
 var vizElement = divElement.getElementsByTagName('object')[0];
-vizElement.style.width='100%';
-vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
 var scriptElement = document.createElement('script');
 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
+vizElement.parentNode.insertBefore(scriptElement, vizElement);
+</script>
