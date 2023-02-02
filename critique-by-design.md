@@ -83,7 +83,24 @@ When looking through the survey data, I realized there is another source of big 
 
 ## Survey
 
-<b>Student, ~20s, Female</b>
+**Student, ~20s, Female**
 First chart has too many colors and everything is squished. The y axis has no percentage label so it's not clear what it means. Hard to map the colors shown in the legend to the values.
 
 Hard to understand the second chart without the interactive labels. Not clear what IDE means.
+
+**Student, ~20s, Male**
+First chart: it is very hard to see the values that are small without interaction. Overall, I can conclude that vscode is the most popular.
+
+Second chart: I don't like that the x axis labels are not all visible. The word 'churn' reflects the opposite of what is going on, it should be 'retention'. I like map visualizations. It would be cool to do it by country.
+
+## Final Version
+
+<div class='tableauPlaceholder' id='viz1675364127118' style='position: relative'><noscript><a href='#'><img alt='Interactive Development Environment Retention 2021 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='IDERetention2021&#47;IDERetentionHeatmap' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;ID&#47;IDERetention2021&#47;IDERetentionHeatmap&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
+<script type='text/javascript'>
+var divElement = document.getElementById('viz1675364127118');
+var vizElement = divElement.getElementsByTagName('object')[0];
+vizElement.style.width='100%';
+vizElement.style.height=(divElement.offsetWidth*0.75)+'px';
+var scriptElement = document.createElement('script');
+scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+vizElement.parentNode.insertBefore(scriptElement, vizElement);</script>
