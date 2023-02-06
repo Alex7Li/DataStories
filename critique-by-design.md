@@ -75,7 +75,7 @@ This is a bit hard to answer. I guess it is engaging since the audience can use 
 
 ## Redesigns
 
-When looking through the survey data, I realized there is another source of big confusion, since each survey response is a list of prior technologies and a list of desired future technologies. This means using a Sankey diagram as I originally planned doesn't make sense. Quite sad, because I wanted to try it :(. Anyways, I played with the values a lot and got these two very different charts.
+When looking through the survey data, I realized there is another source of big confusion, since each survey response is a list of prior technologies and a list of desired future technologies. This means using a Sankey diagram as I originally planned doesn't make sense. Quite sad, because I wanted to try it :(. Anyways, I [played with the values](https://github.com/Alex7Li/DataStories/blob/main/stack_overflow/format_data.py) a lot and got these two very different charts.
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/12609225"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
@@ -94,7 +94,7 @@ First chart: It is very hard to see the values that are small without interactio
 Second chart: I don't like that the x axis labels are not all visible. The word 'churn' reflects the opposite of what is going on, it should be 'retention'. I like map visualizations. It would be cool to do it by country.
 
 Based on the feedback, I felt that the first chart was much more confusing than the second chart. Nobody showed that they really understood what the 'percentage of 100%' actually was in the first chart, and everyone just assumed that it was a single select question, so it has many of the same problems
-as the original visualization. Plus, there isn't really a way to fix the concern that a lot of the items are small with this visualization. I felt that people understood the second data viz much better, for example the second person told me that the title was wrong instantly, because they instantly understood what the chart was trying to convey even without it. From all of this it's clear that the final version should be a remake of the second chart rather than the first.
+as the original visualization. Plus, there isn't really a way to fix the concern that a lot of the items are small with this visualization. I felt that people understood the second data viz much better, for example the second person told me that the title was wrong instantly, because they instantly understood what the chart was trying to convey even without it. From all of this it seems that the final version should be a remake of the second chart rather than the first.
 
 ## Final Version
 
@@ -109,3 +109,6 @@ var scriptElement = document.createElement('script');
 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script>
+
+In class exercise feedback: After showing a finalized chart of the second type, there were some interesting critiques. While
+the mechanics, labels, color, etc were though to be good, there was confusion about what exactly the chart meant exactly; it's too much to understand at a glance, since the topic isn't that familar the data is hard to comprehend. There were some suggestions to use other chart types like a scatter plot or a treemap, but upon further inquiry about the axes and displayed values the suggestors didn't have any idea what they would put and so the suggestions were not actionable. I don't think there is a reasonable way to display it in these formats without removing a signifigant amount of the data: heatmaps show a 3d image and you need to remove a dimension of information to switch to another format. The suggestions for simplifications were basically pushing for a chart more like my first sketch, and considering the earlier feedback from those who had seen a side by side comparison of the two, the heatmap was preferable. It's imaginable that you could only take the diagonal of the heatmap and use it as data, but I feel that the non diagonal elements are also useful as an indication of overall popularity and they convey an actionable message of 'the tool you might want to use next considering what you do use'.
