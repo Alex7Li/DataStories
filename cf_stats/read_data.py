@@ -2,10 +2,11 @@ import os
 import pandas as pd
 from pathlib import Path
 from collections import defaultdict
-import tqdm
 import math
 import heapq
 import logging
+
+import tqdm
 
 data_folder = Path('cf_stats/data')
 
@@ -32,8 +33,8 @@ def getTrueRatings(user_contests):
                         if len(user_contests) > 5:
                             user_contests.iloc[5]['oldRating'] += 50
     else:
-        # Almost surely using the old system.
-        user_contests.iloc[0]['newRating'] += 1500
+        # Almost surely using the old system. oldRating is still 0 in the raw data.
+        user_contests.iloc[0]['oldRating'] += 1500
     return user_contests
 
 def getPerf(user_contests):
@@ -45,7 +46,7 @@ def getPerf(user_contests):
         # estimate the performance ratings, this isn't exactly cf's formula cause I don't know it.
         performance_rating = 4 * (user_contests.iloc[i]['newRating'] - user_contests.iloc[i]['oldRating']) + user_contests.iloc[i]['oldRating']
         perf_col.append(performance_rating)
-        if i > 1:
+        if i >= 1:
             ma_perf_col.append((performance_rating * gamma +  ma_perf_col[-1] * (1 - gamma)))
         else:
             ma_perf_col.append(performance_rating * gamma) # moving average
@@ -104,6 +105,40 @@ def rating_to_bucket(rating):
         # assert 4 == n_buckets - 1
         return 4
 
+def event_order(user_contests, user_submissions):
+    contests = user_contests.itertuples()
+    next_contest = next(contests)
+    # Data is in reversed chronological order for submissions.
+    submissions = user_submissions[::-1].itertuples(index=True)
+    for submission in submissions:
+        while next_contest.updateTime < submission.creationTime:
+            yield next_contest
+            next_contest = next(contests)
+        yield submission
+
+def solves_rating_corr(user_contests, user_submissions, timeframe_days=356):
+    timeframe = 60 * 60 * 24 * timeframe_days
+    # last submission time minus one year
+    start_time = user_submissions.iloc[0]['creationTime'] - timeframe
+    n_contests = 0
+    n_submissions = 0
+    start_rating = None
+    for event in event_order(user_contests, user_submissions):
+        if 'problemId' in event._fields: # submission
+            if  event['creationTime'] <= start_time :
+                continue # data is too old
+            else:
+                n_submissions += 1
+        else: # contest
+            if event['updateTime'] <= start_time:
+                continue # data is too old
+            n_contests += 1
+            if  start_rating == None:
+                start_rating = event.maPerf
+            else:
+    
+
+
 def problemLearnings(contests, submissions):
     problemIncreases = [defaultdict(lambda: 0) for _ in range(n_buckets)]
     problemCounts = [defaultdict(lambda: 0) for _ in range(n_buckets)]
@@ -137,7 +172,6 @@ def problemLearnings(contests, submissions):
             mean = problemIncreases[i][pId] / count
             problemUsefulness.append((mean, count, pId));
         logging.info(f"Problems with enough data: {len(problemUsefulness)}")
-        # most useful
         problemUsefulness = sorted(problemUsefulness, key=lambda x: x[0])
         logging.info(f"Most useful:  {list(reversed(problemUsefulness[-50:]))}")
         logging.info("ALL:")
@@ -145,20 +179,13 @@ def problemLearnings(contests, submissions):
         bucketsUsefulness.append(problemUsefulness)
     return bucketsUsefulness
 
-def event_order(contests, submissions, username):
-    contest_ind = 0
-    submission_ind = 0
-    user_contests = contests[username]
-    user_submissions = submissions[username]
-    for submission_ind in range(len(user_submissions)):
-        while(contest_ind < len(contests)): # and contest date is after submission date
-            pass
 
 def main():
-    subset_size = 1000
+    subset_size = 10
     contests, submissions = get_data(subset_size)
+    response = solves_rating_corr(contests['aayush_142'], submissions['aayush_142'])
     logging.basicConfig(filename=f'best_problems_{subset_size}.log', filemode='w', level=logging.INFO)
-    problemLearnings(contests, submissions)
+    # problemLearnings(contests, submissions)
     print("Done, check log file")
 
 if __name__ == "__main__":
