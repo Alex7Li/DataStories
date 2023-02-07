@@ -10,7 +10,7 @@ import pandas as pd
 from tqdm import tqdm
 logging.basicConfig(filename='logfile.log', filemode='w', level=logging.INFO)
 
-data_folder = Path('') / 'cf_stats' / 'data'
+data_folder = Path('cf_stats/data')
 
 skip_503 = False
 
@@ -128,9 +128,11 @@ def gen_user_data_files(handle, submission_fname, rating_fname):
     try:
         if not os.path.isfile(submission_fname):
             submissions = generate_user_submissions(handle)
-            ratings = generate_user_rating_history(handle)
-            submissions.to_csv(submission_fname)
-            ratings.to_csv(rating_fname)
+            submissions = postprocess_submissions(submissions)
+            submissions.to_csv(submission_fname, index=False)
+            contests = generate_user_rating_history(handle)
+            contests = postprocess_contests(contests)
+            contests.to_csv(rating_fname, index=False)
     except ConnectionError as e:
         # Log error and just keep going we don't want the script to get stuck
         # because someone changed their username or something.
@@ -141,7 +143,7 @@ def generate_sample_user_data():
     # make one sample so I can annotate it on kaggle.
     handle = "WolfBlue" # That's me!
     submission_fname = data_folder / f'submissions_sample.csv'
-    rating_fname = data_folder / f'ratings_sample.csv'
+    rating_fname = data_folder / f'contests_sample.csv'
     gen_user_data_files(handle, submission_fname, rating_fname)
 
 
@@ -149,7 +151,7 @@ def generate_user_data(handles, subset_size=-1):
     handles = handles[:subset_size]
     handles_to_load = [handle for handle in handles if 
                        not os.path.isfile(data_folder / 'submissions' / f'{handle}.csv') or
-                       not os.path.isfile(data_folder / 'ratings' / f'{handle}.csv') ]
+                       not os.path.isfile(data_folder / 'contests' / f'{handle}.csv') ]
     handles_to_not_load = set(handles) - set(handles_to_load)
     logging.info(f"N Cached handles: {len(handles_to_not_load)}.")
     logging.info(f"Cached handles: {handles_to_not_load}")
@@ -159,7 +161,7 @@ def generate_user_data(handles, subset_size=-1):
     pbar = tqdm(handles_to_load)
     for handle in pbar:
         submission_fname = data_folder / 'submissions' / f'{handle}.csv'
-        rating_fname = data_folder / 'ratings' / f'{handle}.csv'
+        rating_fname = data_folder / 'contests' / f'{handle}.csv'
         gen_user_data_files(handle, submission_fname, rating_fname)
 
 def generate_problem_data():
@@ -184,7 +186,7 @@ def dedup_handles(destroy=False):
     good_handles = get_rated_handles(activeOnly=False)
     # Ran this during christmas, when people can change their handles :|
     renamed_handles = []
-    for handles in os.listdir(data_folder / 'ratings'):
+    for handles in os.listdir(data_folder / 'contests'):
         handle = handles[:-4] # strip .csv
         if handle not in good_handles:
             renamed_handles.append(handle)
@@ -194,27 +196,27 @@ def dedup_handles(destroy=False):
         # Don't want to lose a bunch of data due to a typo
         assert(len(renamed_handles) < 1000)
         for handle in renamed_handles:
-            os.remove(f'data/ratings/{handle}.csv')
+            os.remove(f'data/contests/{handle}.csv')
             os.remove(f'data/submissions/{handle}.csv')
 
 
 def main():
     logging.info(f"Script begins running at {datetime.datetime.now()}")
-    os.makedirs(data_folder / 'ratings', exist_ok=True)
+    os.makedirs(data_folder / 'contests', exist_ok=True)
     os.makedirs(data_folder / 'submissions', exist_ok=True)
     rated_handles = get_rated_handles()
 
     logging.info(f"There are {len(rated_handles)} different rated users")
 
     generate_user_data(rated_handles)
-    n_ratings = len(os.listdir(data_folder / 'ratings'))
+    n_contests = len(os.listdir(data_folder / 'contests'))
     n_submissions = len(os.listdir(data_folder / 'submissions'))
     logging.info(f"Script complete at {datetime.datetime.now()}")
-    logging.info(f"{n_ratings=} {n_submissions=}")
-    print(f"{n_ratings=} {n_submissions=}")
+    logging.info(f"{n_contests=} {n_submissions=}")
+    print(f"{n_contests=} {n_submissions=}")
     dedup_handles(destroy=True)
 
-def postprocess_ratings(user_contests):
+def postprocess_contests(user_contests):
     """Overwrite the oldRating and newRating field with estimated approximate values,
     see https://codeforces.com/blog/entry/77890
     """
@@ -245,25 +247,7 @@ def postprocess_submissions(user_submissions):
     user_submissions = user_submissions[::-1]
     return user_submissions
 
-def postprocess():
-    filenames = os.listdir(data_folder / 'ratings')
-    ratings = {}
-    submissions = {}
-    for handlecsv in tqdm(filenames, "reading data"):
-        handle = handlecsv[:-4]
-        ratings[handle] = postprocess_ratings(pd.read_csv(data_folder / 'ratings' / handlecsv))
-        submissions[handle] = pd.read_csv(data_folder / 'submissions' / handlecsv)[::-1]
-        ratings[handle].to_csv(data_folder / 'ratings_final' / handlecsv)
-        submissions[handle].to_csv(data_folder / 'submissions_final' / handlecsv)
-
-if __name__ == '__main__':
-    # generate_sample_user_data()
-    # generate_problem_data()
-    # main()
-    postprocess()
-
-    
-
+# not used functions
 def users_from_contest(id):
     recent_contest_standings = get_cf('contest.standings', {'contestId': id})
     rows = recent_contest_standings['rows']
@@ -278,3 +262,24 @@ def users_from_contest(id):
 def get_active_handles():
     users = set(users_from_contest(1730)).union(set(users_from_contest(1731)))
     return users
+
+def postprocess():
+    filenames = os.listdir(data_folder / 'contests')
+    contests = {}
+    submissions = {}
+    for handlecsv in tqdm(filenames, "postprocessing data"):
+        handle = handlecsv[:-4]
+        contests[handle] = pd.read_csv(data_folder / 'contests' / handlecsv, index_col=False)
+        submissions[handle] = pd.read_csv(data_folder / 'submissions' / handlecsv, index_col=False)
+        contests[handle].rename({"Unnamed: 0":"a"}, axis="columns", inplace=True)
+        contests[handle].drop(["a"], axis=1, inplace=True)
+        submissions[handle].rename({"Unnamed: 0":"a"}, axis="columns", inplace=True)
+        submissions[handle].drop(["a"], axis=1, inplace=True)
+        contests[handle].to_csv(data_folder / 'contests' / handlecsv, index=False)
+        submissions[handle].to_csv(data_folder / 'submissions' / handlecsv, index=False)
+
+if __name__ == '__main__':
+    postprocess()
+    generate_sample_user_data()
+    # generate_problem_data()
+    # main()

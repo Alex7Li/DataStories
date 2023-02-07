@@ -32,14 +32,14 @@ def getPerf(user_contests):
     return user_contests
     
 def get_data(subset_size=0):
-    filenames = os.listdir(data_folder / 'ratings')
+    filenames = os.listdir(data_folder / 'contests')
     if subset_size != 0:
         filenames = filenames[:subset_size]
     ratings = {}
     submissions = {}
     for handlecsv in tqdm.tqdm(filenames, "reading data"):
         handle = handlecsv[:-4]
-        ratings[handle] = getPerf(getTrueRatings(pd.read_csv(data_folder / 'ratings' / handlecsv)))
+        ratings[handle] = getPerf(pd.read_csv(data_folder / 'contests' / handlecsv))
         submissions[handle] = pd.read_csv(data_folder / 'submissions' / handlecsv)
     return ratings, submissions
 
@@ -82,7 +82,7 @@ def event_order(user_contests, user_submissions):
     contests = user_contests.itertuples()
     next_contest = next(contests)
     # Data is in reversed chronological order for submissions.
-    submissions = user_submissions[::-1].itertuples(index=True)
+    submissions = user_submissions.itertuples(index=True)
     for submission in submissions:
         while next_contest.updateTime < submission.creationTime:
             yield next_contest
@@ -156,7 +156,6 @@ def problemLearnings(contests, submissions):
         logging.info(problemUsefulness)
         bucketsUsefulness.append(problemUsefulness)
     return bucketsUsefulness
-
 
 def main():
     subset_size = 10
