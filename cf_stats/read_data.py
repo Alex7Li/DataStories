@@ -10,33 +10,6 @@ import tqdm
 
 data_folder = Path('cf_stats/data')
 
-def getTrueRatings(user_contests):
-    """Overwrite the oldRating and newRating field with estimated approximate values,
-    see https://codeforces.com/blog/entry/77890
-    """
-    if user_contests.iloc[0]['newRating'] < 1000:
-        # Almost surely using the new system.
-        user_contests.iloc[0]['oldRating'] += 1400
-        user_contests.iloc[0]['newRating'] += 900
-        if len(user_contests) > 1:
-            user_contests.iloc[1]['oldRating'] += 900
-            user_contests.iloc[1]['newRating'] += 550
-            if len(user_contests) > 2:
-                user_contests.iloc[2]['oldRating'] += 500
-                user_contests.iloc[2]['newRating'] += 300
-                if len(user_contests) > 3:
-                    user_contests.iloc[3]['oldRating'] += 300
-                    user_contests.iloc[3]['newRating'] += 150
-                    if len(user_contests) > 4:
-                        user_contests.iloc[4]['oldRating'] += 150
-                        user_contests.iloc[4]['newRating'] += 50
-                        if len(user_contests) > 5:
-                            user_contests.iloc[5]['oldRating'] += 50
-    else:
-        # Almost surely using the old system. oldRating is still 0 in the raw data.
-        user_contests.iloc[0]['oldRating'] += 1500
-    return user_contests
-
 def getPerf(user_contests):
     # sharpen the first few ratings with the performance rating formula
     perf_col = []
@@ -118,25 +91,30 @@ def event_order(user_contests, user_submissions):
 
 def solves_rating_corr(user_contests, user_submissions, timeframe_days=356):
     timeframe = 60 * 60 * 24 * timeframe_days
-    # last submission time minus one year
-    start_time = user_submissions.iloc[0]['creationTime'] - timeframe
-    n_contests = 0
-    n_submissions = 0
-    start_rating = None
-    for event in event_order(user_contests, user_submissions):
-        if 'problemId' in event._fields: # submission
-            if  event['creationTime'] <= start_time :
-                continue # data is too old
-            else:
-                n_submissions += 1
-        else: # contest
-            if event['updateTime'] <= start_time:
-                continue # data is too old
-            n_contests += 1
-            if  start_rating == None:
-                start_rating = event.maPerf
-            else:
-    
+    total_time = user_submissions.iloc[-1]['creationTime'] - user_submissions.iloc[0]['creationTime']
+    time_buckets = total_time // timeframe
+    if (time_buckets > 0):
+        user_submissions.map(lambda submission: {
+            
+        })
+        n_contests = 0
+        n_submissions = 0
+        for event in event_order(user_contests, user_submissions):
+            if 'problemId' in event._fields: # submission
+                if event['creationTime'] <= start_time:
+                    continue # data is too old
+                else:
+                    if event['verdict'] == 'OK':
+                        n_submissions += 1
+            else: # contest
+                if event['updateTime'] <= start_time:
+                    continue # data is too old
+                n_contests += 1
+                if  start_rating == None:
+                    start_rating = event.maPerf
+                else:
+                    ...
+
 
 
 def problemLearnings(contests, submissions):

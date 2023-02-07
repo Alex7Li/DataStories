@@ -203,8 +203,6 @@ def main():
     os.makedirs(data_folder / 'ratings', exist_ok=True)
     os.makedirs(data_folder / 'submissions', exist_ok=True)
     rated_handles = get_rated_handles()
-    with open(data_folder / 'handles.json', 'w') as f:
-        json.dump(rated_handles, f)
 
     logging.info(f"There are {len(rated_handles)} different rated users")
 
@@ -216,10 +214,55 @@ def main():
     print(f"{n_ratings=} {n_submissions=}")
     dedup_handles(destroy=True)
 
+def postprocess_ratings(user_contests):
+    """Overwrite the oldRating and newRating field with estimated approximate values,
+    see https://codeforces.com/blog/entry/77890
+    """
+    if user_contests.iloc[0]['newRating'] < 1000:
+        # Almost surely using the new system.
+        user_contests.iloc[0]['oldRating'] += 1400
+        user_contests.iloc[0]['newRating'] += 900
+        if len(user_contests) > 1:
+            user_contests.iloc[1]['oldRating'] += 900
+            user_contests.iloc[1]['newRating'] += 550
+            if len(user_contests) > 2:
+                user_contests.iloc[2]['oldRating'] += 500
+                user_contests.iloc[2]['newRating'] += 300
+                if len(user_contests) > 3:
+                    user_contests.iloc[3]['oldRating'] += 300
+                    user_contests.iloc[3]['newRating'] += 150
+                    if len(user_contests) > 4:
+                        user_contests.iloc[4]['oldRating'] += 150
+                        user_contests.iloc[4]['newRating'] += 50
+                        if len(user_contests) > 5:
+                            user_contests.iloc[5]['oldRating'] += 50
+    else:
+        # Almost surely using the old system. oldRating is still 0 in the raw data.
+        user_contests.iloc[0]['oldRating'] += 1500
+    return user_contests
+
+def postprocess_submissions(user_submissions):
+    user_submissions = user_submissions[::-1]
+    return user_submissions
+
+def postprocess():
+    filenames = os.listdir(data_folder / 'ratings')
+    ratings = {}
+    submissions = {}
+    for handlecsv in tqdm(filenames, "reading data"):
+        handle = handlecsv[:-4]
+        ratings[handle] = postprocess_ratings(pd.read_csv(data_folder / 'ratings' / handlecsv))
+        submissions[handle] = pd.read_csv(data_folder / 'submissions' / handlecsv)[::-1]
+        ratings[handle].to_csv(data_folder / 'ratings_final' / handlecsv)
+        submissions[handle].to_csv(data_folder / 'submissions_final' / handlecsv)
+
 if __name__ == '__main__':
     # generate_sample_user_data()
     # generate_problem_data()
-    main()
+    # main()
+    postprocess()
+
+    
 
 def users_from_contest(id):
     recent_contest_standings = get_cf('contest.standings', {'contestId': id})
