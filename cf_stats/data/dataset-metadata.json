@@ -1,0 +1,155 @@
+{
+  "id": "intrincantation/codeforces-user-practice-and-rating-history",
+  "id_no": 2838162,
+  "datasetSlugNullable": "codeforces-user-practice-and-rating-history",
+  "ownerUserNullable": "intrincantation",
+  "usabilityRatingNullable": 0.9411764705882353,
+  "titleNullable": "Codeforces User Practice and Rating History",
+  "subtitleNullable": "Investigate how people improve their programming skills over time",
+  "descriptionNullable": "Rating for about 61k different rated users of codeforces. Using the [API](https://codeforces.com/apiHelp), I scraped all active users in dec 2022 and january 2023 (it took about a month to run the script). Thanks to the CF team for open with their data so that we can do interesting analysis!\n\nFor each user, you can view the last 10,000 submissions they have made to codeforces (usually, this is all of them) as well as the full history of contests they have participated in and their rating changes. Also, there is information about all the tags/difficulty for most of the problems.\n\nBy combining these timestamps, you can do some analysis on the best strategy to improve in competitions, what problems/tags are the most valuable to learn from, etc.\n\nSources of uncertainly: People don't always practice on codeforces. They can come in with varying level of experience, and they often do things on different sites at the same time as they practice on codeforces. Furthermore, there is no way to know how much time is spent thinking on problems or reading editorials.",
+  "datasetId": 2838162,
+  "datasetSlug": "codeforces-user-practice-and-rating-history",
+  "hasDatasetSlug": true,
+  "ownerUser": "intrincantation",
+  "hasOwnerUser": true,
+  "usabilityRating": 0.9411764705882353,
+  "hasUsabilityRating": true,
+  "totalViews": 17,
+  "totalVotes": 0,
+  "totalDownloads": 2,
+  "title": "Codeforces User Practice and Rating History",
+  "hasTitle": true,
+  "subtitle": "Investigate how people improve their programming skills over time",
+  "hasSubtitle": true,
+  "description": "Rating for about 61k different rated users of codeforces. Using the [API](https://codeforces.com/apiHelp), I scraped all active users in dec 2022 and january 2023 (it took about a month to run the script). Thanks to the CF team for open with their data so that we can do interesting analysis!\n\nFor each user, you can view the last 10,000 submissions they have made to codeforces (usually, this is all of them) as well as the full history of contests they have participated in and their rating changes. Also, there is information about all the tags/difficulty for most of the problems.\n\nBy combining these timestamps, you can do some analysis on the best strategy to improve in competitions, what problems/tags are the most valuable to learn from, etc.\n\nSources of uncertainly: People don't always practice on codeforces. They can come in with varying level of experience, and they often do things on different sites at the same time as they practice on codeforces. Furthermore, there is no way to know how much time is spent thinking on problems or reading editorials.",
+  "hasDescription": true,
+  "isPrivate": true,
+  "keywords": [
+    "computer science",
+    "programming"
+  ],
+  "licenses": [
+    {
+      "nameNullable": "CC0-1.0",
+      "name": "CC0-1.0",
+      "hasName": true
+    }
+  ],
+  "collaborators": [],
+  "resources": [
+    {
+      "path": "problems.csv",
+      "description": "List of regular problems on codeforces. It does not include problems from gym or private problems.",
+      "schema": {
+        "fields": [
+          {
+            "name": "problemId",
+            "description": "id for this problem, in the form contestid:problemnumber",
+            "type": "string"
+          },
+          {
+            "name": "tags",
+            "description": "Tags for this problem, they are choosen by high rated users that solved it.",
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "description": "Name of the problem",
+            "type": "string"
+          },
+          {
+            "name": "solved",
+            "description": "Number of correct solutions for this problem",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "path": "contests_sample.csv",
+      "description": "An example of the ratings history, taken from user https://codeforces.com/profile/WolfBlue\nObtained from https://codeforces.com/apiHelp/objects#RatingChange\nThis field holds the TRUE rating. Old users start at 1.5k rating and the true rating is the same as the displayed one. For new users, they start at 1.4 rating and the true rating will be greater than their displayed rating for the first 6 contests.",
+      "schema": {
+        "fields": [
+          {
+            "name": "updateTime",
+            "description": "Time that the rating was updated in seconds.",
+            "type": "int"
+          },
+          {
+            "name": "oldRating",
+            "description": "Rating before the contest",
+            "type": "number"
+          },
+          {
+            "name": "newRating",
+            "description": "Rating after the contest. Tip: you can estimate the performance rating as (newRating - oldRating) * 4 + oldRating",
+            "type": "number"
+          },
+          {
+            "name": "rank",
+            "description": "Rank within the contest",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "path": "submission_sample.csv",
+      "description": "An example of the submission history, taken from user https://codeforces.com/profile/WolfBlue\nObtained from https://codeforces.com/apiHelp/objects#Submission",
+      "schema": {
+        "fields": [
+          {
+            "name": "submissionId",
+            "description": "Unique id of the submission",
+            "type": "int"
+          },
+          {
+            "name": "problemName",
+            "description": "Name of the problem",
+            "type": "string"
+          },
+          {
+            "name": "problemId",
+            "description": "Id of the problem, in the format contest:problem. Note that not all ids are in problems.csv, if the contest number is more than 2k it's a gym or private contest.",
+            "type": "string"
+          },
+          {
+            "name": "creationTime",
+            "description": "Time that the submission was created in seconds",
+            "type": "number"
+          },
+          {
+            "name": "relativeTimeSeconds",
+            "description": "Time into the contest before submission, or a large constant for practice.",
+            "type": "number"
+          },
+          {
+            "name": "participantType",
+            "description": "virtual contests simulate contest experience, but are not live.",
+            "type": "string"
+          },
+          {
+            "name": "verdict",
+            "description": "OK means the code passed, otherwise the reason for failure.",
+            "type": "string"
+          },
+          {
+            "name": "testset",
+            "description": "PRETESTS are in contests, submissions that pass will be run against the full test set at the end of contest, you must pass the full test to get credit.",
+            "type": "string"
+          },
+          {
+            "name": "programmingLanguage",
+            "description": "Language of this submission",
+            "type": "string"
+          },
+          {
+            "name": "passedTestCount",
+            "description": "Number of test cases that this submission passed. Submissions are run until the first failed case.",
+            "type": "int"
+          }
+        ]
+      }
+    }
+  ]
+}
