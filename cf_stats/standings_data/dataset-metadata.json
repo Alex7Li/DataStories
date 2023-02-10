@@ -1,0 +1,106 @@
+{
+  "title": "Codeforces Contest Standings",
+  "id": "intrincantation/cf-standings",
+  "description": "Standings for all contests on codeforces.\nNote that the ratings are the codeforces displayed ratings, which are too low for a user's first 6 contests due to an update.",
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "resources": [
+    {
+      "path": "standings_sample.csv",
+      "description": "An example of a typical file, from standings/471.csv. Obtained from https://codeforces.com/apiHelp/methods#contest.standings.",
+      "schema": {
+        "fields": [
+          {
+            "name": "rank",
+            "description": "Rank of this person in the final standings. May not be '1,2,3,4,...' due to ties and team contests. In team contests, there is one line per member but they share mostly the same data.",
+            "type": "number"
+          },
+          {
+            "name": "handle",
+            "description": "Codeforces username of this person. Team contests will have an additional column 'teamId'.",
+            "type": "string"
+          },
+          {
+            "name": "points",
+            "description": "Points that this person scored",
+            "type": "number"
+          },
+          {
+            "name": "penalty",
+            "description": "Penalty points, for ICPC type contests only. It is the sum of times to solve problems plus 20 penalty minuntes per wrong answer. Used to sort contestants with the same score, lower is better.",
+            "type": "number"
+          },
+          {
+            "name": "successfulHackCount",
+            "description": "Number of successful hacks for CF type contests. See https://codeforces.com/blog/entry/107753",
+            "type": "number"
+          },
+          {
+            "name": "successfulHackCount",
+            "description": "Number of unsuccessful hacks for CF type contests. See https://codeforces.com/blog/entry/107753",
+            "type": "number"
+          },
+          {
+            "name": "oldDisplayRating",
+            "description": "The previous display rating of the contestant. See dataset description for important caviats.",
+            "type": "number"
+          },
+          {
+            "name": "newDisplayRating",
+            "description": "The new display rating of the contestant. See dataset description for important caviats.",
+            "type": "number"
+          },
+          {
+            "name": "points_A",
+            "description": "The number of points this person scored for problem A. For CF contests, this is less than the point value for the problem because of how penalty time works. You can see the full point value and all problem ids in standings_metadata.json",
+            "type": "number"
+          },
+          {
+            "name": "rejectedAttemptCount_A",
+            "description": "The number of incorrect submissions for this problem.",
+            "type": "number"
+          }, {
+            "name": "points_B",
+            "description": "Same as before.",
+            "type": "number"
+          }, {
+            "name": "rejectedAttemptCount_B",
+            "description": "Same as before.",
+            "type": "number"
+          }, {
+            "name": "points_C",
+            "description": "Same as before",
+            "type": "number"
+          }, {
+            "name": "rejectedAttemptCount_C",
+            "description": "Same as before.",
+            "type": "number"
+          }, {
+            "name": "points_D",
+            "description": "Same as before",
+            "type": "number"
+          }, {
+            "name": "rejectedAttemptCount_D",
+            "description": "Same as before.",
+            "type": "number"
+          }, {
+            "name": "points_E",
+            "description": "Same as before",
+            "type": "number"
+          }, {
+            "name": "rejectedAttemptCount_E",
+            "description": "Same as before.",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "path": "dataset-metadata.json",
+      "description": "Metadata for each contest. \nproblem_inds: the name of the problems, semicolon separated\ncontest_type: the type of contest, determines scoring. Typically 'CF', 'ICPC' or rarely 'IOI'. \nproblem_points: How many points was the problem worth in the standings?\nrated: if this contest changed user ratings.\nname: The name of the contest.\nteam: true for team contests"
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-| [home page](https://alex7li.github.io/DataStories/) | [critique by design](critique-by-design)
+[home page](https://alex7li.github.io/DataStories/)
 
 
 ## OECD

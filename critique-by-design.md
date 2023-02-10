@@ -1,4 +1,4 @@
-| [home page](https://alex7li.github.io/DataStories/) | [visualizing debt](visualizing-government-debt)
+[home page](https://alex7li.github.io/DataStories/)
 
 For this assignment, we will be critiquing and trying to improve on a visual from the stack overflow web developer survey. It's quite eye catching, let's look at it together.
 

@@ -1,3 +1,4 @@
 /data/*
 !/data/dataset-metadata.json
 .vscode
+/standings_data/standings
