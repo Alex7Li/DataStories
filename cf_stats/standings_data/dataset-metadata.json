@@ -16,7 +16,7 @@
           {
             "name": "rank",
             "description": "Rank of this person in the final standings. May not be '1,2,3,4,...' due to ties and team contests. In team contests, there is one line per member but they share mostly the same data.",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "handle",
@@ -31,26 +31,26 @@
           {
             "name": "penalty",
             "description": "Penalty points, for ICPC type contests only. It is the sum of times to solve problems plus 20 penalty minuntes per wrong answer. Used to sort contestants with the same score, lower is better.",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "successfulHackCount",
             "description": "Number of successful hacks for CF type contests. See https://codeforces.com/blog/entry/107753",
-            "type": "number"
+            "type": "integer"
           },
           {
-            "name": "successfulHackCount",
+            "name": "unsuccessfulHackCount",
             "description": "Number of unsuccessful hacks for CF type contests. See https://codeforces.com/blog/entry/107753",
-            "type": "number"
+            "type": "integer"
           },
           {
             "name": "oldDisplayRating",
-            "description": "The previous display rating of the contestant. See dataset description for important caviats.",
+            "description": "The previous display rating of the contestant.",
             "type": "number"
           },
           {
             "name": "newDisplayRating",
-            "description": "The new display rating of the contestant. See dataset description for important caviats.",
+            "description": "The new display rating of the contestant.",
             "type": "number"
           },
           {
@@ -61,7 +61,7 @@
           {
             "name": "rejectedAttemptCount_A",
             "description": "The number of incorrect submissions for this problem.",
-            "type": "number"
+            "type": "integer"
           }, {
             "name": "points_B",
             "description": "Same as before.",
@@ -69,7 +69,7 @@
           }, {
             "name": "rejectedAttemptCount_B",
             "description": "Same as before.",
-            "type": "number"
+            "type": "integer"
           }, {
             "name": "points_C",
             "description": "Same as before",
@@ -77,7 +77,7 @@
           }, {
             "name": "rejectedAttemptCount_C",
             "description": "Same as before.",
-            "type": "number"
+            "type": "integer"
           }, {
             "name": "points_D",
             "description": "Same as before",
@@ -85,7 +85,7 @@
           }, {
             "name": "rejectedAttemptCount_D",
             "description": "Same as before.",
-            "type": "number"
+            "type": "integer"
           }, {
             "name": "points_E",
             "description": "Same as before",
@@ -93,7 +93,7 @@
           }, {
             "name": "rejectedAttemptCount_E",
             "description": "Same as before.",
-            "type": "number"
+            "type": "integer"
           }
         ]
       }
