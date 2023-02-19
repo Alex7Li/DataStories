@@ -1,4 +1,5 @@
 [home page](https://alex7li.github.io/DataStories/)
+[next](https://alex7li.github.io/DataStories/final-project-wireframe) 
 
 # Final Project Outline
 
@@ -57,7 +58,7 @@ Now, let's start trying to look at user growth over time, and answer the questio
 
 Let's start with the second graph on this page: a very basic visual that will compare the total number of problems solved to user rating, along with some error bounds. This will be a nice way to start off and there isn't much data preprocessing involved. It will be a very interesting to see how much it takes the average person to get to a specific skill level.
 
-Now let's move the the connected scatter plot above it. It's an attempt by me to merge 4 variables into one graph and follow the stories of a few users. The goal is to answer the question "what kind of users see the most improvement"? There is some speculation that people who can solve problems really fast might have a higher skill barrier than people who take longer to think things through. So we plot the time to solve the easiest problem in the set and compare how the rating changes over time. Relatedly, we have an axis for the average number of incorrect submissions to see if people who make less bugs in their code have higher potential.
+Now let's move the the connected scatter plot above it. It's an attempt by me to merge 4 variables into one graph and follow the stories of a few users. The goal is to answer the question "what kind of users see the most improvement"? There is some speculation that people who can solve problems really fast might have a higher skill barrier than people who take longer to think things through. So we plot the time to solve the easiest problem in the set and compare how the rating changes over time. Relatedly, we have an axis for the average number of incorrect submissions to see if people who make less bugs in their code have higher potential. While it conveys a lot of information, this graph is quite confusing. I plan to use it to explore the data, and once I can dilute that exploration into insights, I will revise this graph to be simpler and highlight the main points.
 
 Now, for our final plots, I want to see if there are any variables strongly correlated to improvements.
 For this visual, I've preprocessed the data into 1-year periods. For each period, I find the rating change and the number of problems solved, and see how they scale together.
@@ -65,9 +66,17 @@ For this visual, I've preprocessed the data into 1-year periods. For each period
 We establish that practice does lead to improvements, on average. We can set other independent variables as well: this next graph has the number of 'hard' problems that the user has solved.
 <div class="flourish-embed flourish-scatter" data-src="visualisation/12716075"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
-The trendlines are helpful but there is a ton of noise in both of these graphs, so I think I want to get a correlation coefficient out of the data.
-But still, there is a lot of noise here! If time permits I intend to try and filter the data in various ways to get a correlation coefficient closer to 1.
+The trendlines are helpful but there is a ton of noise in both of these graphs, so I think I want to get a correlation coefficient out of the data. It's about .3 in the first case and .4 in the second case.
+Clearly, there is a lot of noise here. If time permits I intend to try and filter the data in various ways to get a correlation coefficient closer to 1.
+
+Still, there is already one really interesting observation that I will highlight in a callout: the line of best fit to predict rating change over a year has a slope of about
+
+`-.04 * n_problems_solved + .9 * n_hard_problems_solved`
+
+so solving problems that are not hard does not help develop skills at all, which is quite surprising. In fact, there is a statisically signifigant negative coefficient!
 
 ## Method and Medium
 
 For the final project, I will be doing all of the data processing in python to create csv files that I use for either flourish or tableau. Then, I will put these charts into a static website published using shorthand. For the presentation, I will just scroll through the website while explaining what the charts represent.
+
+[next](https://alex7li.github.io/DataStories/final-project-wireframe) 

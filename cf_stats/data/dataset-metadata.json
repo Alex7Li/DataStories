@@ -63,6 +63,11 @@
             "title": "Name of the problem",
             "type": "string"
           },
+            {
+            "name": "rating",
+            "title": "difficulty of the problem",
+            "type": "number"
+          },
           {
             "name": "solved",
             "title": "Number of correct solutions for this problem",

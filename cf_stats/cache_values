@@ -1,0 +1,55 @@
+import bisect
+from collections import defaultdict
+import json
+import logging
+import os
+from pathlib import Path
+from typing import List, TypedDict, Optional, Dict
+
+import numpy as np
+import pandas as pd
+from tqdm import tqdm
+tqdm.pandas()
+
+standings_folder = Path('cf_stats/standings_data')
+cache_folder = Path('cf_stats/cache')
+
+
+def first_solve_percentile(contest_ind, time):
+    """First solve percentile in this contest, lower is better.
+    """
+    if contest_ind not in first_solve_percentile_cache:
+        standings = pd.read_csv(
+            standings_folder / "standings" / f"{contest_ind}.csv")
+        contest_standings = standings_json[contest_ind]
+        problem_letters = contest_standings['problem_inds'].split(';')
+
+        def get_first_solve_time(row):
+            first_solve_time = pd.NA
+            for problem_letter in problem_letters:
+                solve_time = row[f'time_{problem_letter}']
+                if not pd.isna(solve_time):
+                    if pd.isna(first_solve_time):
+                        first_solve_time = solve_time
+                    else:
+                        first_solve_time = min(solve_time, first_solve_time)
+            return first_solve_time
+
+        first_solve_times = standings.apply(get_first_solve_time, axis=1)
+        first_solve_times = first_solve_times.dropna().sort_values()
+        skip = max(len(first_solve_times) // 200, 1)
+        first_solve_percentile_cache[contest_ind] = list(first_solve_times[::skip])
+    insert_ind = bisect.bisect_left(first_solve_percentile_cache[contest_ind], time)
+    return 100 * float(insert_ind) / len(first_solve_percentile_cache[contest_ind])
+
+    
+
+if __name__ == '__main__':
+  first_solve_percentile_cache = {}
+  with open(standings_folder / "standing_metadata.json") as f:
+      standings_json = json.load(f)
+  for key in tqdm(standings_json.keys()):
+    path = standings_folder / "standings" / f"{key}.csv"
+    first_solve_percentile(key, 0)
+  with open(cache_folder / "cache.json", "w+") as f:
+      json.dump(first_solve_percentile_cache, f)

@@ -57,10 +57,13 @@
             "name": "points_A",
             "description": "The number of points this person scored for problem A. For CF contests, this is less than the point value for the problem because of how penalty time works. You can see the full point value and all problem ids in standings_metadata.json",
             "type": "number"
-          },
-          {
+          }, {
             "name": "rejectedAttemptCount_A",
             "description": "The number of incorrect submissions for this problem.",
+            "type": "integer"
+          }, {
+            "name": "time_A",
+            "description": "The number of seconds before this problem was solved.",
             "type": "integer"
           }, {
             "name": "points_B",
