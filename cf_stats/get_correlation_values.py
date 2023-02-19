@@ -29,7 +29,7 @@ def predict_rating_change():
 
 def predict_first_solve_time():
     df = pd.read_csv(analysis_folder / 'first_solve_delta_all.csv')
-    print(df['n_submissions'].corr(df['delta_first_solve_percentile']))
+    print(df['n_submissions'].corr(df['delta_first_solve_percentilew']))
     print(df['n_hard_correct'].corr(df['delta_first_solve_percentile']))
     df['n_easy_correct'] = df['n_submissions'] - df['n_hard_correct']
     print("All")

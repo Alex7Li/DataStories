@@ -57,6 +57,13 @@ To generalize further than I stastically should, taking classes that are easy fo
 
 Because these statistics are so important to the story, and because my audience is pretty good techinically, I include them as callouts in the final story. I know it's strange to have correlation coefficients and linear function coefficients as a data visualization but this is the thing that tells a compelling story.
 
+After seeing these results, I was inspired to ask anothe question. I added a graph that sees if easy problems can improve the speed that you solve easy problems at.
+
+<div class="flourish-embed flourish-scatter" data-src="visualisation/12780512"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
+
+It seems that the answer is: not really.
+> Actually, there are quite a few numeric issues with the data (it's hard to estimate the change in 'average first solve time' because it's a metric that requires two measurements of 'average first solve time' which itself is a metric that requires many measurements of 'first solve time' which are themselves noisy for reasons like a constestant starting late, or being in a contest where all other competitiors are unusually strong or weak. The latter situation is very common due to a division system. But we're going with 'not really'.
+
 ## Storyboards
 
 Introduction: By including imagery of real competitions, we give unfamiliar people an idea of what the sport looks like.
