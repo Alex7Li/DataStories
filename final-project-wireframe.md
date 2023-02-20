@@ -79,9 +79,10 @@ Call to action: First it's a picture of text reinforcing the message, then we tr
 
 There is only one target persona: someone who is currently doing competitive programming, and who wants to get better.
 
-Though, to make sure the audience can be more broad, the introduction exists.
+Though, to make sure the audience can be more broad, the introduction exists. I will find 2 people with CP experience, and
+one person with a more broad experience when gathering feedback.
 
-Questions to ask in the interview:
+### Questions to ask in the interview:
 
 After reading the storyboard, do you feel that anything is missing?
 
@@ -93,7 +94,71 @@ Looking through the storyboard, did any section seem to not fit in with the othe
 
 What other charts/analysis would you like to see?
 
+### Female 20s, Expert on codeforces
 
+Overall, she did not feel like anything was missing from the analysis and could not think
+of anything to add to it. While going through the charts, she was surprised at the number
+of users in hackerrank.
+
+Upon getting to the easy/hard question story, she mentioned "I hate to solve hard questions"
+but still agreed with the premise. Had some confusion with the popups, since the text refers
+to them as question marks while they are information icons.
+
+While looking at the last chart, she observed that doing more problems increases solve speed,
+which is not the point I wanted to get across.
+
+When asked, she said that the area chart was the most confusing one, because the line
+pattern is so complicated. The format of this chart seemed optimal to her.
+
+### Male 20s, Master on codeforces, coach for some competitive programming teams
+
+In the walkthrough, he was thrown off because I had combined both the 'pupil' and 'newbie'
+category into one color. He observed that trying to estimate how rating correlated with
+number of submissions was not as helpful as number of correct submissions.
+
+He said that the call to action was a very useful section to have and it helped make
+the story a lot more actionable. He said that all of the charts were easy for him to
+comprehend because
+"I am a master of reading charts in addition a master on codeforces." 😼
+He could not think of any charts to add.
+
+He felt that one thing that was missing was information on how much people practice
+on other platforms, since that's very common. That's a huge project, though.
+
+He had some doubt over the conclusion that easy problems are not useful, saying
+that there are many types of problems and some are more helpful than others. He
+expressed suspicion at the negative coefficient, wondering if it was due to some
+2D phenonana with PCA. He was interested in seeing the results segmented into more
+categories than just 'easy' and 'hard'.
+
+He was also interested in trying to segment some of the results based on rating,
+because the way that people learn changes a lot as they gain experience.
+
+"When you are below expert, you need to learn ideas. Later, when you get better, you need to apply them."
+
+And, when you are a newbie, you need to learn to code. For easy problems, people can essentially always
+either solve them 90% of the time or 10% of the time, in his experience.
+
+### Male 20s, student
+
+The first graph could use a legend, there are too many colors in the treemap. The amount of
+text is too high compared to the number of graphs. Consider adding some 15% transparent code
+in the background, or a screenshot of one of the websites. In the first graph, you could add logos
+for the website. The overall storyline was good.
+
+## Actions to take
+
+- Make the text refering to a question mark refer to an information icon.
+- Take the last chart and either make a grid of correlation between variables instead of the existing chart, or change the title to be more clear
+- Separate out pupil and newbie category
+- Modify the rating vs n submissions to have an x-axis of number of correct submissions, and smooth out the lines.
+- Add discussion on limitations due to practice on other platforms.
+- Split the linear model into all rating categories.
+- Remove colors from the treemap
+- Add subtitles to remove text from the website
+- Modify some of the background to have more of a coding feel
+- CONSIDER a graph above how much people 'get stuck' at a rating for a long time
+- CONSIDER add logos in the first graph
 
 ### Continue
 
