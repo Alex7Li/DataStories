@@ -1,5 +1,5 @@
-[home page](https://alex7li.github.io/DataStories/)
-[next](https://alex7li.github.io/DataStories/final-project-wireframe) 
+[home page](https://alex7li.github.io/DataStories/) |
+[next: final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) 
 
 # Final Project Outline
 
@@ -79,4 +79,4 @@ so solving problems that are not hard does not help develop skills at all, which
 
 For the final project, I will be doing all of the data processing in python to create csv files that I use for either flourish or tableau. Then, I will put these charts into a static website published using shorthand. For the presentation, I will just scroll through the website while explaining what the charts represent.
 
-[next](https://alex7li.github.io/DataStories/final-project-wireframe) 
+[next: final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) 

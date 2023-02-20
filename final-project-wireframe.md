@@ -1,10 +1,6 @@
-[home page](https://alex7li.github.io/DataStories/)
-[prev](https://alex7li.github.io/DataStories/final-project-outline) 
-
-
-[home page](https://alex7li.github.io/DataStories/)
-[prev](https://alex7li.github.io/DataStories/final-project-outline)
-[next](https://alex7li.github.io/DataStories/final-project-final)
+[home page](https://alex7li.github.io/DataStories/) |
+[prev: final project outline](https://alex7li.github.io/DataStories/final-project-outline) |
+[next: final final project](https://alex7li.github.io/DataStories/final-project-final)
 
 # Final Project Wireframe
 
@@ -162,4 +158,4 @@ for the website. The overall storyline was good.
 
 ### Continue
 
-[next](https://alex7li.github.io/DataStories/final-project-final)
+[next: final final project](https://alex7li.github.io/DataStories/final-project-final)

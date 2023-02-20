@@ -13,7 +13,7 @@ First and foremost, I wanna know how to look at a big dataset and figure out how
 [visualizing debt](https://alex7li.github.io/DataStories/visualizing-government-debt) |
 [critique by design](https://alex7li.github.io/DataStories/critique-by-design) |
 [final project outline](https://alex7li.github.io/DataStories/final-project-outline) |
-[final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) 
+[final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe)
 
 Prepare to we wowed by beautiful charts like this
 
