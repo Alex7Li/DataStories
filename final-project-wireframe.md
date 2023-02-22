@@ -69,6 +69,7 @@ Anaysis: Idk let's just use random 'analysis' images
 Call to action: First it's a picture of text reinforcing the message, then we transition into the 'victory' image from I think the winners of last year's ICPC world finals. Maybe the reader will feel like they will be able to get there. Probablly not, statistically speaking.
 
 [View the website preview!](https://preview.shorthand.com/ePD6rBoLNtleDV6i)
+[If that link doesn't work, view published site](https://carnegiemellon.shorthandstories.com/competitive-programming-talent-vs-tenacity/index.html)
 
 
 ## User Research
@@ -144,9 +145,9 @@ for the website. The overall storyline was good.
 
 ## Actions to take
 
-- Make the text refering to a question mark refer to an information icon.
+X Make the text refering to a question mark refer to an information icon.
+X Separate out pupil and newbie category
 - Take the last chart and either make a grid of correlation between variables instead of the existing chart, or change the title to be more clear
-- Separate out pupil and newbie category
 - Modify the rating vs n submissions to have an x-axis of number of correct submissions, and smooth out the lines.
 - Add discussion on limitations due to practice on other platforms.
 - Split the linear model into all rating categories.

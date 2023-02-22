@@ -1,11 +1,12 @@
 import itertools
 from pathlib import Path
 
+from scipy.signal import savgol_filter
 import pandas as pd
 
 analysis_folder = Path('cf_stats/analysis')
 
-def make_bands(df, x_var, y_var, bands, width=100, freq=20, min_val=None, max_val=None):
+def make_bands(df, x_var, y_var, bands, width=100, freq=10, min_val=None, max_val=None):
     df = df.sort_values(by=x_var)
     if min_val is None:
         min_val = df.iloc[0][x_var]
@@ -21,6 +22,9 @@ def make_bands(df, x_var, y_var, bands, width=100, freq=20, min_val=None, max_va
         for i, v in enumerate(vals.quantile(bands)):
             band_vals[format_v(bands[i])].append(v)
         band_vals[y_var].append(center)
+    for b in bands:
+        band_vals[format_v(b)] = savgol_filter(
+            band_vals[format_v(b)], 20, 2)
     new_df = pd.DataFrame(band_vals)
     return new_df
 

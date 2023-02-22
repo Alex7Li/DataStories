@@ -138,9 +138,9 @@ def rating_to_name(rating):
     if rating == None:
         return 'unknown'
     if rating < 1200:
-        return 'pupil'
+        return 'newbie'
     if rating < 1400:
-        return 'novice'
+        return 'pupil'
     if rating < 1600:
         return 'specialist'
     if rating < 1900:
@@ -170,6 +170,13 @@ class PeriodInfo(TypedDict):
     end_rating: int
     n_correct: int
     n_hard_correct: int
+    n_gm_correct: int
+    n_master_correct: int
+    n_cm_correct: int
+    n_expert_correct: int
+    n_specialist_correct: int
+    n_pupil_correct: int
+    n_newbie_correct: int
     n_contests: int
     n_contest_correct: int
     n_contest_wrong: int
@@ -204,6 +211,13 @@ def bucketed_period_info(user_contests, user_submissions, username, timeframe_da
     NO_RATING = -99999
     buckets = [PeriodInfo(start_rating=NO_RATING, end_rating=NO_RATING,
                           n_correct=0, n_hard_correct=0,
+                          n_gm_correct=0,
+                          n_master_correct=0,
+                          n_cm_correct=0,
+                          n_expert_correct=0,
+                          n_specialist_correct=0,
+                          n_pupil_correct=0,
+                          n_newbie_correct=0,
                           median_first_solve_percentile=None,
                           n_wrong=0,
                           n_contest_wrong=0,
@@ -242,6 +256,15 @@ def bucketed_period_info(user_contests, user_submissions, username, timeframe_da
                 if problem_ind != None:
                     problem = problems.iloc[problem_ind]
                     problem_rating: int = problem['rating']  # type: ignore
+                    match rating_to_name(problem_rating):
+                        case 'newbie': buckets[bucket]['n_newbie_correct'] += 1
+                        case 'pupil': buckets[bucket]['n_pupil_correct']+=1
+                        case 'specialist': buckets[bucket]['n_specialist_correct']+=1
+                        case 'expert': buckets[bucket]['n_expert_correct']+=1
+                        case 'candidate master': buckets[bucket]['n_cm_correct']+=1
+                        case 'master': buckets[bucket]['n_master_correct']+=1
+                        case 'grandmaster': buckets[bucket]['n_gm_correct']+=1
+                        case _: pass
                     if problem_rating > buckets[bucket]['start_rating']:
                         buckets[bucket]['n_hard_correct'] += 1
                     if submission['participantType'] == "CONTESTANT":
@@ -302,7 +325,14 @@ def compute_rating_change_correlation(contests, submissions, fname: Path,
         'n_contests':  [b['n_contests'] for b in all_buckets],
         'username': [b['username'] for b in all_buckets],
         'time': [b['period_time'] for b in all_buckets],
-        'first_solve_percentile': [(100.0 - b['median_first_solve_percentile']) for b in all_buckets]
+        'first_solve_percentile': [(100.0 - b['median_first_solve_percentile']) for b in all_buckets],
+        'solves_newbie': [b['n_newbie_correct'] for b in all_buckets],
+        'solves_pupil': [b['n_pupil_correct'] for b in all_buckets],
+        'solves_specialist': [b['n_specialist_correct'] for b in all_buckets],
+        'solves_expert': [b['n_expert_correct'] for b in all_buckets],
+        'solves_cm': [b['n_cm_correct'] for b in all_buckets],
+        'solves_master': [b['n_master_correct'] for b in all_buckets],
+        'solves_gm': [b['n_gm_correct'] for b in all_buckets]
     }
     if get_delta_first_solves:
         obj['delta_first_solve_percentile'] = [(-b['delta_first_solve_percentile']) for b in all_buckets]
@@ -315,7 +345,9 @@ def get_overall_stats(contests, submissions, fname):
     ratings = []
     submission_counts = []
     for user, submissions in submissions.items():
-        submission_counts.append(len(submissions))
+        ok_verdicts = submissions[submissions['verdict'] == 'OK']
+        ok_ids = pd.unique(ok_verdicts['problemId'])
+        submission_counts.append(len(ok_ids))
         curRating = contests[user].iloc[len(contests[user]) - 1]['newRating']
         ratings.append(curRating)
     df = pd.DataFrame({
@@ -425,14 +457,14 @@ def count_problem_tags(exploded):
 
 def main():
     # count_problem_tags(explode_problem_tags())
-    subset_size = 60000
-    # logging.basicConfig(
-    #     filename=f'read_data_{subset_size}.log', filemode='w', level=logging.INFO)
+    subset_size = 0
+    logging.basicConfig(
+        filename=f'read_data_{subset_size}.log', filemode='w', level=logging.INFO)
     contests, submissions = get_data(subset_size)
     df = compute_rating_change_correlation(contests, submissions,  analysis_folder / 'rating_change.csv', get_delta_first_solves=True)
-    # df = get_overall_stats(contests, submissions,  analysis_folder / 'rating_overall.csv')
+    df = get_overall_stats(contests, submissions,  analysis_folder / 'rating_overall.csv')
     # create_user_stories(df)
-    # problemLearnings(contests, submissions)
+    problemLearnings(contests, submissions)
 
 
 if __name__ == "__main__":
