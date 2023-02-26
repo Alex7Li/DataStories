@@ -57,8 +57,7 @@ professional developer using subline text wants to use VS code". I don't think i
 
 - Intuitiveness: 5/10
 
-It's confusing! It took me a while to understand that the
-direction of the churn arrows is based off of their color.
+It's confusing! It took me a while to understand that the direction of the churn arrows is based off of their color.
 
 Since self-loops have double thickness, the amount that the pi chart is visualizing is 'number either using or want to use' while my expectation was 'number using' for a long time.
 

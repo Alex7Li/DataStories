@@ -75,7 +75,7 @@ def get_contest_standings():
                 handle_standing_map = {}
                 for standings in recent_contest_standings['rows']:
                     for i in range(len(standings['party']['members'])):
-                        # The first rated team contest is https://codeforces.com/contest/534
+                        # The first rated team contest is https://codeforces.com/contest/524
                         handle = standings['party']['members'][i]['handle']
                         handle_standing_map[handle] = standings
                 return handle_standing_map

@@ -4,7 +4,7 @@
 
 # Summary of the work
 
-## Features Implemented since part 2
+## Features Implemented since part 2 from interviews
 
 Some of the user features were very simple to implement.
 - Make the text refering to a question mark refer to an information icon.
@@ -36,6 +36,20 @@ I tried making a grid of correlation values here. However, I don't know if it's 
 
 <div class="flourish-embed flourish-heatmap" data-src="visualisation/12829168"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 
+## Features implemented based on grader feedback of part 2
+
+First, I tried to add a story of a contestant named Andrew. However, something about trying to follow a user through the analysis just felt strange to me in this context. Every time I wrote the name andrew, it just felt like I was introducing an artificial person and trying to force an unnatrual story. It felt more natural to write a story that followed the journey of [the reader].
+
+Next, I added context for readers unfamiliar with comp programming by providing an example rating and a graph of the rating distribution. This along with a paragraph about percentiles makes it more clear what a rating of 2100 is, and everyone knows what we are talking about. It does take up a bunch of space, but the problem is fun so I think it's worth it. In fact, the graph is not my own but the color scheme is consistent and it works well so there is no reason to redesign it.
+
+Finally, I checked the sources for all the images and put citations in the bottom (other than the free images from shorthand, which includes the neccessary citation.)
+
+## Bonus feature: Don't crash on mobile
+
+When giving some user interviews, I learned that my site crashes on mobile. Why? Because the flourish charts are massive.
+
+So, I subsampled the data to be 1000 points per grouping. I think the resulting charts don't look as good, but it does not crash on my phone and loads a bit faster, so it's a worthy tradeoff, since I plan to add the site to a blog article later.
+
 ## Audience
 
 The target audience is people who are interested in improving their skills at competitive programming and practicing in the future.
@@ -50,7 +64,7 @@ Three personas:
 
 For the first persona, the context statistics at the start of the page are meant to be helpful. They can see how the popularity of contests compares to the popularity of interview websites, and they will see that there is a lot of overlap in the topic areas. This is the persona that will get the most out of the treemap diagram.
 
-The second persona is really going to be interested in some of the later analysis.
+The second persona is really going to be interested in some of the later analysis. They might wonder how much effort it takes in total to get very good, so I tried to estimate it.
 
 The third persona will want to see where they are and if they are really falling behind or just imagining it. To help with that, I added a line explaining how to find yourself on the graph, so they can measure their progress. This persona will also be interested in the analysis of easy vs hard problems. To help account for the differences in the first and second persona and make results feel at least a little bit more applicable, I separated the users into groups distinguished by their current rating.
 

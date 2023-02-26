@@ -1,6 +1,4 @@
-[home page](https://alex7li.github.io/DataStories/) |
-[prev: final project outline](https://alex7li.github.io/DataStories/final-project-outline) |
-[next: final final project](https://alex7li.github.io/DataStories/final-project-final)
+[home page](https://alex7li.github.io/DataStories/) | [prev: final project outline](https://alex7li.github.io/DataStories/final-project-outline) | [next: final final project](https://alex7li.github.io/DataStories/final-project-final)
 
 # Final Project Wireframe
 
@@ -68,8 +66,9 @@ Anaysis: Idk let's just use random 'analysis' images
 
 Call to action: First it's a picture of text reinforcing the message, then we transition into the 'victory' image from I think the winners of last year's ICPC world finals. Maybe the reader will feel like they will be able to get there. Probablly not, statistically speaking.
 
-[View the website preview!](https://preview.shorthand.com/ePD6rBoLNtleDV6i)
-[If that link doesn't work, view published site](https://carnegiemellon.shorthandstories.com/competitive-programming-talent-vs-tenacity/index.html)
+[View the website!](https://carnegiemellon.shorthandstories.com/competitive-programming-talent-vs-tenacity/index.html)
+
+> Note from the future: This is now the link to the final project, not the wireframe!
 
 
 ## User Research
