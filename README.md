@@ -1,8 +1,4 @@
-[visualizing debt](https://alex7li.github.io/DataStories/visualizing-government-debt) |
-[critique by design](https://alex7li.github.io/DataStories/critique-by-design) |
-[final project outline](https://alex7li.github.io/DataStories/final-project-outline) |
-[final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) |
-[final project final](https://alex7li.github.io/DataStories/final-project-final)
+[visualizing debt](https://alex7li.github.io/DataStories/visualizing-government-debt) | [critique by design](https://alex7li.github.io/DataStories/critique-by-design) | [final project outline](https://alex7li.github.io/DataStories/final-project-outline) | [final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) | [final project final](https://alex7li.github.io/DataStories/final-project-final)
 
 For the telling stories with data class.
 ## About Me

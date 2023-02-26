@@ -69,6 +69,19 @@ The second persona is really going to be interested in some of the later analysi
 The third persona will want to see where they are and if they are really falling behind or just imagining it. To help with that, I added a line explaining how to find yourself on the graph, so they can measure their progress. This persona will also be interested in the analysis of easy vs hard problems. To help account for the differences in the first and second persona and make results feel at least a little bit more applicable, I separated the users into groups distinguished by their current rating.
 
 
+
 ## Final project website
 
 [Final Project Website](https://carnegiemellon.shorthandstories.com/competitive-programming-talent-vs-tenacity/index.html)
+
+### Script
+
+Competitive programming is the logical extreme of a programming interview, where contestants need to solve super hard problems in extremely short timeframes. Millions of people have tried it, and tens of thousands show up to the biggest competitions.
+
+There's a large span of problem topics, and to measure your skill there is a rating system like in chess, with 2000 being extremely impressive. As you practice more, you will improve: there is no clear indicator that there exists a level at which you cannot get any better, so long as you keep pouring more time into it.
+
+But it's not just about the number of problems solved: it's also about the diffculty of those problems. We tried to predict the rating growth from the number of easy problems and the number of hard problems solved. A 2 variable model revelealed that solving a hard problem improves your rating by 1, but solving more easy problems is a negative predictor of success.
+
+This holds true for both beginners and experts in our datasets: solving problems that are easy for you does not actually seem to make you get better.
+
+In conclusion, it's beneficial to challenge yourself and surprisingly worthless to review things you know. Improving by 200 rating points takes about 800 hours, but if you're willing to put in the effort, you should see gains.
