@@ -1,4 +1,4 @@
-[home page](https://alex7li.github.io/DataStories/) | [next: final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe) 
+[home page](https://alex7li.github.io/DataStories/) | [next: final project wireframe](https://alex7li.github.io/DataStories/final-project-wireframe)
 
 # Final Project Outline
 

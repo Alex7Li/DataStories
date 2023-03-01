@@ -116,7 +116,6 @@ def shortTermImprovement(user_contests, time):
     return newRating - oldRating, oldRating
 
 
-n_buckets = 5
 
 
 def rating_to_bucket(rating):
@@ -130,7 +129,6 @@ def rating_to_bucket(rating):
         return 3
     else:
         assert rating >= 2200
-        # assert 4 == n_buckets - 1
         return 4
 
 
@@ -233,7 +231,7 @@ def bucketed_period_info(user_contests, user_submissions, username, timeframe_da
     for i in range(contest_offset + 1, len(user_contests)):
         contest = user_contests.iloc[i]
         bucket = bucket_ind(contest['updateTime'])
-        if bucket >= n_buckets:
+        if bucket >= len(buckets):
             continue
         assert bucket >= 0
         if bucket + 1 < len(buckets):
@@ -370,6 +368,7 @@ def create_user_stories(df=None):
     df.to_csv(analysis_folder / 'rating_change_long_term.csv', index=False)
 
 def problemLearnings(contests, submissions):
+    n_buckets = 5
     problemIncreases = [defaultdict(lambda: 0) for _ in range(n_buckets)]
     problemCounts = [defaultdict(lambda: 0) for _ in range(n_buckets)]
     for user, submissionList in tqdm(submissions.items(), "Calculating problem learnings"):
@@ -452,8 +451,6 @@ def count_problem_tags(exploded):
     counts = exploded.groupby('tags').count()['problemId']
     counts.to_csv(analysis_folder / 'problem_tag_count.csv', index=True)
     
-
-
 
 def main():
     # count_problem_tags(explode_problem_tags())

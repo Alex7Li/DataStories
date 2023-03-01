@@ -7,7 +7,7 @@ from tqdm import tqdm
 import pandas as pd
 
 from get_data import get_cf
-data_folder = Path('cf_stats/data')
+
 standings_data_folder = Path('cf_stats/standings_data')
 
 
